@@ -1,0 +1,20 @@
+version: '3.4'
+
+services: 
+    sqlserver_service:
+        image: mcr.microsoft.com/mssql/server:2017-latest
+        environment: 
+            - ACCEPT_EULA=Y
+            - SA_PASSWORD=lCs12SjU            
+        ports: 
+            - 1433:1433
+        volumes: 
+            - sql_data:/var/opt/mssql/data         
+        networks: 
+            - db
+volumes: 
+    sql_data:
+        driver: local
+networks: 
+    db:
+        driver: bridge
